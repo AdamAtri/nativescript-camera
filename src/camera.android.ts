@@ -52,9 +52,11 @@ export let takePicture = function (options?): Promise<any> {
             let tempPictureUri;
 
             if (saveToGallery) {
-                picturePath = android.os.Environment.getExternalStoragePublicDirectory(
-                    android.os.Environment.DIRECTORY_DCIM).getAbsolutePath() + "/Camera/" + "NSIMG_" + dateStamp + ".jpg";
-
+                const dir = android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DCIM).getAbsolutePath() + "/Camera/";
+                const dirFile = new java.io.File(dir);
+                if (!dirFile.exists())
+                    dirFile.mkdir();
+                picturePath = dirFile.getAbsolutePath() + "/NSIMG_" + dateStamp + ".jpg";
                 nativeFile = new java.io.File(picturePath);
             } else {
                 picturePath = utils.ad.getApplicationContext().getExternalFilesDir(null).getAbsolutePath() + "/" + "NSIMG_" + dateStamp + ".jpg";
@@ -109,6 +111,10 @@ export let takePicture = function (options?): Promise<any> {
                                         trace.categories.Debug);
                                 }
                             }
+                        }
+                        const picFile = new java.io.File(picturePath);
+                        if (! picFile.exists()) {
+                            return reject('Cannot locate the picture file');
                         }
 
                         let exif = new android.media.ExifInterface(picturePath);
