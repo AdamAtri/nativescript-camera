@@ -4,7 +4,7 @@
     "description": "Provides API for using device camera",
     "repository": {
         "type": "git",
-        "url": "https://github.com/NativeScript/nativescript-camera"
+        "url": "https://github.com/AdamAtri/nativescript-camera"
     },
     "main": "camera",
     "typings": "index.d.ts",

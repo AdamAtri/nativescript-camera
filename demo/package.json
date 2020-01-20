@@ -6,10 +6,10 @@
   "nativescript": {
     "id": "org.nativescript.demo",
     "tns-android": {
-      "version": "6.2.0"
+      "version": "4.2.0"
     },
     "tns-ios": {
-      "version": "6.2.0"
+      "version": "4.2.0"
     }
   },
   "scripts": {
@@ -20,14 +20,14 @@
     "ci.ios.build": "cd ../src && npm run build && cd ../demo && tns build ios"
   },
   "dependencies": {
-    "nativescript-camera": "../src",
-    "tns-core-modules": "^6.0.0"
+    "nativescript-camera": "file:../src",
+    "tns-core-modules": "4.2.1"
   },
   "devDependencies": {
     "@types/node": "~10.12.18",
     "nativescript-css-loader": "~0.26.1",
     "nativescript-dev-webpack": "^1.3.0",
-    "tns-platform-declarations": "^6.0.0",
+    "tns-platform-declarations": "4.2.0",
     "tslint": "~5.11.0",
     "typescript": "~3.5.3"
   }
